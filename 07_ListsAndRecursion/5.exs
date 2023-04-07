@@ -59,19 +59,19 @@ defmodule MyEnum do
     {list, []}
   end
 
+  def split(list, count) when count > 0 and (length list) - count > 0 do
+    {take(list, count), take(list, count - length list )}
+  end
+
   def split(list, count) when count > 0 do
-    if ((length list) - count) > 0 do
-      {take(list, count), take(list, count - length list )}
-    else
-      {list, []}
-    end
+    {list, []}
+  end
+
+  def split(list, count) when count < 0 and (length list) + count > 0 do
+    {take(list, count + length list), take(list, count)}
   end
 
   def split(list, count) when count < 0 do
-    if ((length list) + count) > 0 do
-      {take(list, count + length list), take(list, count)}
-    else
-      {[], list}
-    end
+    {[], list}
   end
 end
