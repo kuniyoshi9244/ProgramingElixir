@@ -4,12 +4,12 @@ defmodule Orders do
   end
 
   defp get_total_amount(order, tax_rates) do
-    [ total_amount: Keyword.get(order, :net_amount) * get_tax_rate(order, tax_rates) ]
+    [ total_amount: Keyword.get(order, :net_amount) * (1.0 + get_tax_rate(order, tax_rates)) ]
   end
 
   defp get_tax_rate(order, tax_rates) do
     ship_to = Keyword.get(order, :ship_to)
-    Keyword.get(tax_rates, ship_to, 1.0)
+    Keyword.get(tax_rates, ship_to, 0.0)
   end
 end
 
