@@ -1,5 +1,5 @@
 defmodule MyFile do
-  def read() do
+  def csv_to_list() do
     {:ok, file} = File.open("sales.csv", [:utf8])
 
     headers =
