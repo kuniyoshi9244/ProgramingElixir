@@ -2,7 +2,7 @@ defmodule CsvSigil do
   def sigil_v(lines, _opts) do
     lines
     |> String.trim_trailing()
-    |> String.split()
+    |> String.split(~r{(\r\n|\r|\n)})
     |> Enum.map(fn line -> String.split(line, ",") end)
   end
 end
